@@ -1,18 +1,16 @@
 const express = require("express");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv").config();
 const connectDB = require("./config/db.js");
 const cors = require("cors");
 const router = require("./routes/authRoute.js");
 const cookieParser = require("cookie-parser");
 const app = express();
-//configure env
-dotenv.config();
 
-//middelwares
 app.use(
   cors({
     origin: "http://localhost:5173",
-    withCredendialts: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
   })
 );
 app.use(cookieParser());
